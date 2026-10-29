@@ -4,7 +4,7 @@ title: '0002 · Separate date problems by cause'
 owner: dancarlson
 status: proposed
 reviewed: 2026-10-28
-signature: 'dancarlson / Codex / S01E03'
+signature: 'v1.eyJzdWIiOiI1MDgxIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMzcyMjEsImV4cCI6MTc5MzMyMzYyMX0.-dGQaYcjUoPUUQrGcIV2vLorm4e-wrI_uqWYqxtQaTw'
 ---
 
 <script>
