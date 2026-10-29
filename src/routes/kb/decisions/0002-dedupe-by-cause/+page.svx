@@ -1,0 +1,88 @@
+---
+layout: runbook
+title: '0002 · Separate date problems by cause'
+owner: dancarlson
+status: proposed
+reviewed: 2026-10-28
+signature: 'dancarlson / Codex / S01E03'
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+</script>
+
+## Decision and scope
+
+Proposed replacement for [decision 0001](/kb/decisions/0001-dedupe-by-subject).
+The accepted historical decision is preserved. The desk must adopt this replacement before
+its procedure can be treated as changed. This review covers the supplied 4 October export,
+not a live query of the desk's current queue.
+
+[The incident page](/kb/incidents/4471) calls the date reports one known issue with one fix queued.
+The executable cause table contradicts that claim. Separate the shared parser problem from
+the booking form hint problem. A parser fix alone does not fix the form's misleading hint.
+
+## Problems and counts
+
+<CauseTable ticket={4471} />
+
+**Parser:** the shared parser reads month first although the tenant writes day first.
+For example, Harbour Dental's report R-41200 says 7 April became 4 July; R-41201 corrects
+the direction of its own report. Use the tenant's locale, not the reporter's browser locale.
+Validate the parser with ambiguous dates in both directions and reject impossible dates.
+
+**Hint:** booking-v3 displays MM/DD/YYYY while its form reads dates in the day-first tenant's
+order. This affects form reports for Alder Physio, Copper Studio and Pale Harbour. Align the
+visible hint with the form's parsing order and test submission through the actual form.
+R-41230 and R-41241 illustrate this group. App and email reports from these same tenants
+still belong to the parser group under the supplied classifier.
+
+Counts above are computed from the data with uniqueById, then filtered to mergedInto 4471,
+then grouped by causeOf using the tenant directory. Overlapping export pages must not inflate
+counts. Intake tags are guesses; neither they nor subject text establish cause.
+
+<Callout kind="warn">
+The one-day-move notes identify reports whose wording does not establish a month/day swap.
+They remain included in the parser total under the supplied classifier, not extra reports or
+a proven third cause. Preserve their bodies and investigate actual timestamps, time zones and
+reproduction steps before concluding what caused them. R-41620 also says the reporter stopped
+reporting: the queue does not measure everyone affected.
+</Callout>
+
+## What the queue shows
+
+<QueueTimeline ticket={4471} />
+
+Received time and merged time measure different events. Reports started arriving in April;
+a later batch of merges is desk activity, not proof that the product failure started then.
+Reports continue through the export date. The desk keeps working: refresh the export and
+recompute before using these counts for a later queue review. This chart has a fixed export
+window; extend its end date when reviewing newer reports.
+
+## How to triage now
+
+Look up the tenant's locale and form version, read the body and identify the channel.
+Check the cause and merge only reports with the same supported cause. Keep unrelated
+problems separate even when their subjects match. Missing tenant data or uncertain evidence
+means investigate, not automatic merge. Matching classifier output is a triage rule, not
+proof that every report has the same underlying defect.
+
+<DedupeExplorer />
+
+The examples demonstrate that identical subjects can describe different causes, and different
+subjects can describe the same cause. The old triage page and decision were reviewed in 2024;
+the runbook's stale warning is a reason to check their claims against these views. The newer
+incident review date does not make its one-issue conclusion correct.
+
+## Follow-up and verification
+
+Track one engineering issue per supported problem, with counts and report IDs in the repository's
+drafts and generated analysis. Preserve a separate investigation note for anomalous wording.
+Re-run the build when data changes, review the rendered cause table, dedupe examples and queue
+chart, and verify this page's desk reference. Fixes are proposed, not shipped or verified here.
+
+<RenderStamp {signature} />
