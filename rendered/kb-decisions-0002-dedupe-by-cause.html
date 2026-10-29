@@ -25,6 +25,13 @@
   footer.svelte-e2jw2j { margin-top: 3rem; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); padding-top: 1rem; }
 
 
+  .sum.svelte-12oyimm { font-size: 1.1rem; }
+  .tags.svelte-12oyimm { color: var(--muted); font-size: 0.85em; }
+  .note.svelte-12oyimm { color: var(--muted); font-size: 0.85em; }
+  .wrong.svelte-12oyimm td:where(.svelte-12oyimm) { background: var(--warn-bg); }
+  .wrong.svelte-12oyimm td:where(.svelte-12oyimm):last-child { color: var(--warn); font-weight: 600; }
+
+
   svg.svelte-18a6qal { width: 100%; max-width: 640px; }
   .in.svelte-18a6qal { fill: var(--warn); }
   .merged.svelte-18a6qal { fill: var(--accent); }
@@ -35,18 +42,6 @@
   .key.merged.svelte-18a6qal { background: var(--accent); }
 
 
-  .stamp.svelte-1280m42 { margin: 2rem 0 0; font: 0.85rem var(--mono); color: var(--muted); }
-  .stamp.svelte-1280m42 b:where(.svelte-1280m42) { color: var(--accent); letter-spacing: 0.04em; }
-  .missing.svelte-1280m42 { color: var(--warn); }
-
-
-  .sum.svelte-12oyimm { font-size: 1.1rem; }
-  .tags.svelte-12oyimm { color: var(--muted); font-size: 0.85em; }
-  .note.svelte-12oyimm { color: var(--muted); font-size: 0.85em; }
-  .wrong.svelte-12oyimm td:where(.svelte-12oyimm) { background: var(--warn-bg); }
-  .wrong.svelte-12oyimm td:where(.svelte-12oyimm):last-child { color: var(--warn); font-weight: 600; }
-
-
   .try.svelte-gq0h2h { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
   fieldset.svelte-gq0h2h { display: grid; gap: 0.4rem; border: 1px solid var(--line); border-radius: 6px; }
   .verdict.svelte-gq0h2h { grid-column: 1 / -1; margin: 0; font-weight: 600; color: var(--muted); }
@@ -55,6 +50,11 @@
 
   aside.svelte-17bri61 { border-left: 4px solid var(--accent); padding: 0.5rem 1rem; margin: 1rem 0; background: var(--note-bg); }
   aside.warn.svelte-17bri61 { border-color: var(--warn); background: var(--warn-bg); }
+
+
+  .stamp.svelte-1280m42 { margin: 2rem 0 0; font: 0.85rem var(--mono); color: var(--muted); }
+  .stamp.svelte-1280m42 b:where(.svelte-1280m42) { color: var(--accent); letter-spacing: 0.04em; }
+  .missing.svelte-1280m42 { color: var(--warn); }
 
 
   .stale.svelte-tbc1ha { color: var(--warn); font-weight: 600; }
@@ -87,7 +87,9 @@ means investigate, not automatic merge. Matching classifier output is a triage r
 proof that every report has the same underlying defect.</p> <div class="try svelte-gq0h2h"><!--[--><fieldset class="svelte-gq0h2h"><legend>report A</legend> <select aria-label="tenant"><!--[--><option selected="">alder.physio</option><option>copper.studio</option><option>harbour.dental</option><option>kettle.books</option><option>lantern.row</option><option>long.table</option><option>morrow.tax</option><option>nine.lanterns</option><option>pale.harbour</option><option>ridge.clinic</option><option>stone.and.sons</option><!--]--></select> <select aria-label="channel"><!--[--><option>app</option><option>email</option><option selected="">form</option><!--]--></select> <input value="Booking on the wrong date" aria-label="subject"/> <code>hint</code></fieldset><fieldset class="svelte-gq0h2h"><legend>report B</legend> <select aria-label="tenant"><!--[--><option>alder.physio</option><option>copper.studio</option><option>harbour.dental</option><option selected="">kettle.books</option><option>lantern.row</option><option>long.table</option><option>morrow.tax</option><option>nine.lanterns</option><option>pale.harbour</option><option>ridge.clinic</option><option>stone.and.sons</option><!--]--></select> <select aria-label="channel"><!--[--><option>app</option><option>email</option><option selected="">form</option><!--]--></select> <input value="Booking on the wrong date" aria-label="subject"/> <code>parser</code></fieldset><!--]--> <p class="verdict svelte-gq0h2h">different causes — keep apart</p></div> <table><thead><tr><th>case</th><th>same subject</th><th>same cause</th></tr></thead><tbody><!--[--><tr><td>app vs email, same tenant</td><td>no</td><td class="svelte-gq0h2h dup">yes</td></tr><tr><td>same subject, same tenant, different channel</td><td>yes</td><td class="svelte-gq0h2h">no</td></tr><tr><td>same subject, same channel, different tenant</td><td>yes</td><td class="svelte-gq0h2h">no</td></tr><tr><td>different subject, same way in</td><td>no</td><td class="svelte-gq0h2h dup">yes</td></tr><tr><td>no tenant on file</td><td>yes</td><td class="svelte-gq0h2h">no</td></tr><!--]--></tbody></table><!----> <p>The examples demonstrate that identical subjects can describe different causes, and different
 subjects can describe the same cause. The old triage page and decision were reviewed in 2024;
 the runbook’s stale warning is a reason to check their claims against these views. The newer
-incident review date does not make its one-issue conclusion correct.</p> <h2>Follow-up and verification</h2> <p>Track one engineering issue per supported problem, with counts and report IDs in the repository’s
+incident review date does not make its one-issue conclusion correct.</p> <h2>Engineering outcome — 5 October</h2> <p>After the first course submission, the <a href="https://hq.mega.dev/challenges/what-it-shows" rel="nofollow">challenge page</a> published a desk update: source ticket #4471 closed on 5 October.</p> <ul><li><strong>Parser: fixed.</strong> Engineering reports <code>fix(dates): parse dd/mm for eu locales</code>. <a href="https://github.com/dancarlson/mega-s01e03-what-it-shows/issues/1" rel="nofollow">Repository issue 1</a> is closed as completed.</li> <li><strong>Hint: won’t fix.</strong> The booking-v3 form was retired. <a href="https://github.com/dancarlson/mega-s01e03-what-it-shows/issues/2" rel="nofollow">Repository issue 2</a> is closed as not planned. Retirement is not a fix to that form’s hint.</li></ul> <p>These outcomes are reported by the course’s engineering update, not independently tested
+against production. The export counts remain historical. The original one-issue claim and
+stale triage rule still require the corrections documented here.</p> <h2>Follow-up and verification</h2> <p>Track one engineering issue per supported problem, with counts and report IDs in the repository’s
 drafts and generated analysis. Preserve a separate investigation note for anomalous wording.
 Re-run the build when data changes, review the rendered cause table, dedupe examples and queue
-chart, and verify this page’s desk reference. Fixes are proposed, not shipped or verified here.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-P0QX-RARZ</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--></body></html>
+chart, and verify this page’s desk reference. Engineering outcomes are recorded above; production behavior has not been independently verified here.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-P0QX-RARZ</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--></body></html>

@@ -8,7 +8,7 @@ Method: deduplicate export rows by id (last occurrence wins), filter mergedInto 
 
 First received: 2026-04-17; last received: 2026-09-22; tenants: 3. Intake tags: {"parser":15,"hint":18}.
 
-Scope: supplied export through 2026-10-04; the desk continues working. Refresh counts for later data. No product fix has been shipped.
+Scope: supplied export through 2026-10-04; the desk continues working. Refresh counts for later data. Engineering update on the course page: parser fixed on 5 October (fix(dates): parse dd/mm for eu locales); hint will not be fixed because booking-v3 was retired. These are reported outcomes, not independent production verification.
 
 Evidence: src/lib/kb/causes.ts, src/lib/kb/locales.ts, src/lib/data/reports-4471.json, tenant directory; signed decision source and rendered HTML in this repo.
 

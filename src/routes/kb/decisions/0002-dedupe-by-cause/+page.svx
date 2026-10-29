@@ -78,11 +78,27 @@ subjects can describe the same cause. The old triage page and decision were revi
 the runbook's stale warning is a reason to check their claims against these views. The newer
 incident review date does not make its one-issue conclusion correct.
 
+## Engineering outcome — 5 October
+
+After the first course submission, the [challenge page](https://hq.mega.dev/challenges/what-it-shows)
+published a desk update: source ticket #4471 closed on 5 October.
+
+- **Parser: fixed.** Engineering reports `fix(dates): parse dd/mm for eu locales`.
+  [Repository issue 1](https://github.com/dancarlson/mega-s01e03-what-it-shows/issues/1)
+  is closed as completed.
+- **Hint: won’t fix.** The booking-v3 form was retired.
+  [Repository issue 2](https://github.com/dancarlson/mega-s01e03-what-it-shows/issues/2)
+  is closed as not planned. Retirement is not a fix to that form's hint.
+
+These outcomes are reported by the course's engineering update, not independently tested
+against production. The export counts remain historical. The original one-issue claim and
+stale triage rule still require the corrections documented here.
+
 ## Follow-up and verification
 
 Track one engineering issue per supported problem, with counts and report IDs in the repository's
 drafts and generated analysis. Preserve a separate investigation note for anomalous wording.
 Re-run the build when data changes, review the rendered cause table, dedupe examples and queue
-chart, and verify this page's desk reference. Fixes are proposed, not shipped or verified here.
+chart, and verify this page's desk reference. Engineering outcomes are recorded above; production behavior has not been independently verified here.
 
 <RenderStamp {signature} />

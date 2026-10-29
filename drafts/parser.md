@@ -10,7 +10,7 @@ First received: 2026-04-01; last received: 2026-10-04; tenants: 11. Intake tags:
 
 Five reports in this count are marked oneDayMove in desk-notes.json: R-41202, R-41209, R-41236, R-41344, R-41620. Their wording warrants investigation, not a confirmed third cause. They are already included in 379, not additional reports.
 
-Scope: supplied export through 2026-10-04; the desk continues working. Refresh counts for later data. No product fix has been shipped.
+Scope: supplied export through 2026-10-04; the desk continues working. Refresh counts for later data. Engineering update on the course page: parser fixed on 5 October (fix(dates): parse dd/mm for eu locales); hint will not be fixed because booking-v3 was retired. These are reported outcomes, not independent production verification.
 
 Evidence: src/lib/kb/causes.ts, src/lib/kb/locales.ts, src/lib/data/reports-4471.json, tenant directory; signed decision source and rendered HTML in this repo.
 
